@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Página Principal</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 60px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 32px; text-align: center; }
+        h1 { color: #1976d2; }
+        p { color: #333; }
+        form { margin-top: 24px; }
+        input[type="number"] { width: 80px; padding: 6px; margin: 0 8px; }
+        input[type="submit"] { padding: 6px 16px; }
+        .resultado { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <h1>¡Bienvenido a la página principal!</h1>
+        <p>Este es un proyecto Django minimalista.</p>
+        <form method="post">
+            {% csrf_token %}
+            <input type="number" name="a" value="{{ a }}" required>
+            +
+            <input type="number" name="b" value="{{ b }}" required>
+            <input type="submit" value="Sumar">
+        </form>
+        {% if resultado is not None %}
+            <div class="resultado">
+                Resultado: {{ resultado }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
